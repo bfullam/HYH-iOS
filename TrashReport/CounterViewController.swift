@@ -12,10 +12,20 @@ class CounterViewController: UIViewController {
     
     var trashType = ""
     
+    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var valueLable: UILabel!
+    
+    @IBAction func stepperValueChanged(sender: AnyObject) {
+        valueLable.text = Int(stepper.value).description
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Trash Count"
         print("Trash type selected: \(trashType)")
+        
+        stepper.autorepeat = true
+        
         // Do any additional setup after loading the view.
     }
 

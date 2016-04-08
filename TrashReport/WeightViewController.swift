@@ -15,7 +15,7 @@ class WeightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Trash Weight"
-        print("Trash type selected: \(trashType)")
+        print("Trash type selected: \(trashType)") //debugging
         // Do any additional setup after loading the view.
     }
 
