@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vvB-Sg-qr8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vvB-Sg-qr8">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -67,6 +67,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OnY-Px-RWO">
                                 <rect key="frame" x="276" y="387" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAction:" destination="i4m-eC-OtX" eventType="touchUpInside" id="WS3-NR-3XZ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the weight of the collected trash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBB-sq-ZcZ">
                                 <rect key="frame" x="127" y="173" width="347" height="21"/>
@@ -146,6 +149,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnn-CR-Zt6">
                                 <rect key="frame" x="276" y="402" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitAction:" destination="Ds3-oI-uS4" eventType="touchUpInside" id="C6f-9F-IDz"/>
+                                </connections>
                             </button>
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-hn-f2L">
                                 <rect key="frame" x="253" y="327" width="94" height="29"/>
@@ -168,6 +174,7 @@
                     </view>
                     <connections>
                         <outlet property="stepper" destination="QfB-hn-f2L" id="1EY-l8-UNb"/>
+                        <outlet property="submitButton" destination="Wnn-CR-Zt6" id="heP-eK-Qf7"/>
                         <outlet property="valueLable" destination="Eef-v0-dWz" id="Fzd-YA-3zl"/>
                         <segue destination="NZm-dx-xc7" kind="show" identifier="toReceipt" id="S9r-eQ-fmP"/>
                     </connections>
@@ -196,6 +203,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4E1-Mr-8AM"/>
+        <segue reference="S9r-eQ-fmP"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,9 +14,23 @@ class CounterViewController: UIViewController {
     
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var valueLable: UILabel!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBAction func submitAction(sender: AnyObject) {
+        if (Int(stepper.value) > 0)
+        {
+            self.performSegueWithIdentifier("toReceipt", sender: sender)
+        }
+    }
     
     @IBAction func stepperValueChanged(sender: AnyObject) {
         valueLable.text = Int(stepper.value).description
+        
+        if (Int(stepper.value) > 0)
+        {
+            submitButton.enabled = true;
+        } else {
+            submitButton.enabled = false;
+        }
     }
     
     override func viewDidLoad() {
@@ -25,6 +39,7 @@ class CounterViewController: UIViewController {
         print("Trash type selected: \(trashType)")
         
         stepper.autorepeat = true
+        submitButton.enabled = false
         
         // Do any additional setup after loading the view.
     }

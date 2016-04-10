@@ -14,6 +14,9 @@ class WeightViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var inputWeight: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    @IBAction func submitAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("toReceipt", sender: sender)
+    }
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
