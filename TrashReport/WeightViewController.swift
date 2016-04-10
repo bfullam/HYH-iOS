@@ -8,20 +8,45 @@
 
 import UIKit
 
-class WeightViewController: UIViewController {
+class WeightViewController: UIViewController, UITextFieldDelegate {
     
-    
-
     var trashType = ""
     
+    @IBOutlet weak var inputWeight: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        <#code#>
+        let receiptVC = (segue.destinationViewController as! ReceiptViewController)
+        receiptVC.trashType = trashType
+        receiptVC.trashWeight = Int(inputWeight.text!)!.description
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        // Find out what the text field will be after adding the current edit
+        let text = (inputWeight.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        
+        if let _ = Int(text) {
+            // Text field converted to an Int
+            submitButton.enabled = true
+        } else {
+            // Text field is not an Int
+            submitButton.enabled = false
+        }
+        
+        // Return true so the text field will be changed
+        return true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Trash Weight"
+        submitButton.enabled = false
+        inputWeight.delegate = self
+        inputWeight.keyboardType = .NumberPad
+        
         print("Trash type selected: \(trashType)") //debugging
+        
         // Do any additional setup after loading the view.
     }
 

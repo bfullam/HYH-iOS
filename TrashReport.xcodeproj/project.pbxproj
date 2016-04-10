@@ -18,6 +18,7 @@
 		FF66B67E1CB5FF750057A19C /* TrashReportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66B67D1CB5FF750057A19C /* TrashReportUITests.swift */; };
 		FF66B68C1CB60B8D0057A19C /* WeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66B68B1CB60B8D0057A19C /* WeightViewController.swift */; };
 		FF66B68E1CB60E630057A19C /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66B68D1CB60E630057A19C /* CounterViewController.swift */; };
+		FF804B691CB9DDA3000534A6 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF804B681CB9DDA3000534A6 /* ReceiptViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FF66B67F1CB5FF750057A19C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF66B68B1CB60B8D0057A19C /* WeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightViewController.swift; sourceTree = "<group>"; };
 		FF66B68D1CB60E630057A19C /* CounterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
+		FF804B681CB9DDA3000534A6 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				FF66B65A1CB5FF750057A19C /* AppDelegate.swift */,
 				FF66B65C1CB5FF750057A19C /* ViewController.swift */,
 				FF66B65E1CB5FF750057A19C /* Main.storyboard */,
+				FF804B681CB9DDA3000534A6 /* ReceiptViewController.swift */,
 				FF66B68D1CB60E630057A19C /* CounterViewController.swift */,
 				FF66B68B1CB60B8D0057A19C /* WeightViewController.swift */,
 				FF66B6641CB5FF750057A19C /* Assets.xcassets */,
@@ -346,6 +349,7 @@
 				FF66B68E1CB60E630057A19C /* CounterViewController.swift in Sources */,
 				FF66B68C1CB60B8D0057A19C /* WeightViewController.swift in Sources */,
 				FF66B6631CB5FF750057A19C /* TrashReport.xcdatamodeld in Sources */,
+				FF804B691CB9DDA3000534A6 /* ReceiptViewController.swift in Sources */,
 				FF66B65D1CB5FF750057A19C /* ViewController.swift in Sources */,
 				FF66B65B1CB5FF750057A19C /* AppDelegate.swift in Sources */,
 			);

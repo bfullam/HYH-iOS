@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vvB-Sg-qr8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vvB-Sg-qr8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -89,7 +89,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="inputWeight" destination="KYp-Fj-ngr" id="qAV-Lx-Wjq"/>
+                        <outlet property="inputWeight" destination="KYp-Fj-ngr" id="ZRn-ZV-YqK"/>
+                        <outlet property="submitButton" destination="OnY-Px-RWO" id="hZp-ch-QG8"/>
                         <segue destination="NZm-dx-xc7" kind="show" identifier="toReceipt" id="4E1-Mr-8AM"/>
                     </connections>
                 </viewController>
@@ -97,10 +98,10 @@
             </objects>
             <point key="canvasLocation" x="1971" y="-17"/>
         </scene>
-        <!--View Controller-->
+        <!--Receipt View Controller-->
         <scene sceneID="YPg-U0-pLW">
             <objects>
-                <viewController id="NZm-dx-xc7" sceneMemberID="viewController">
+                <viewController id="NZm-dx-xc7" customClass="ReceiptViewController" customModule="TrashReport" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h0e-MQ-YtW"/>
                         <viewControllerLayoutGuide type="bottom" id="fDT-hN-fxl"/>
@@ -195,6 +196,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S9r-eQ-fmP"/>
+        <segue reference="4E1-Mr-8AM"/>
     </inferredMetricsTieBreakers>
 </document>
