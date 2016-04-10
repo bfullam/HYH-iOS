@@ -16,6 +16,8 @@ class ReceiptViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Receipt"
+        
 //        print("trashType: \(trashType) " +
 //            "\ntrashWeight: \(trashWeight) " +
 //            "\ntrashCount: \(trashCount) ")

@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import CoreLocation
 
-class CounterViewController: UIViewController {
+class CounterViewController: UIViewController, CLLocationManagerDelegate {
     
     var trashType = ""
+    var locValue:CLLocationCoordinate2D!
+    var baseRef = Firebase(url:"https://glaring-fire-6068.firebaseio.com")
     
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var valueLable: UILabel!
@@ -18,7 +22,38 @@ class CounterViewController: UIViewController {
     @IBAction func submitAction(sender: AnyObject) {
         if (Int(stepper.value) > 0)
         {
-            self.performSegueWithIdentifier("toReceipt", sender: sender)
+            //get location info
+            let locationManage = CLLocationManager()
+            
+            locationManage.requestWhenInUseAuthorization()
+            if CLLocationManager.locationServicesEnabled() {
+                locationManage.delegate = self
+                locationManage.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManage.startUpdatingLocation()
+            }
+            func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+                locValue = manager.location!.coordinate
+            }
+            
+            //get date info
+            let date = NSDate()
+            
+            //put info into structure
+            let locRef = baseRef.childByAppendingPath("\(date)")
+            let info =  ["trash_type": trashType,
+                         "trash_count": Int(stepper.value).description,
+                         "Trash_loc": "\(locValue)"]
+            
+            //add to firebase
+            locRef.setValue(info, withCompletionBlock: {
+                (error:NSError?, ref:Firebase!) in
+                if( error != nil) {
+                    print("Data failed")
+                } else {
+                    print("Data saved")
+                    self.performSegueWithIdentifier("toReceipt", sender: sender)
+                }
+            })
         }
     }
     
@@ -36,7 +71,7 @@ class CounterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Trash Count"
-        print("Trash type selected: \(trashType)")
+//        print("Trash type selected: \(trashType)")
         
         stepper.autorepeat = true
         submitButton.enabled = false

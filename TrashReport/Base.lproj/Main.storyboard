@@ -112,7 +112,43 @@
                     <view key="view" contentMode="scaleToFill" id="XBy-fQ-dfI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trash submission success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhb-hC-hzn">
+                                <rect key="frame" x="197" y="148" width="206" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trash Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-kD-WlE">
+                                <rect key="frame" x="197" y="223" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trash Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAK-Jj-G5l">
+                                <rect key="frame" x="188" y="355" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trash Weight:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCS-ul-jJq">
+                                <rect key="frame" x="181" y="283" width="106" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZCS-ul-jJq" firstAttribute="trailing" secondItem="EAK-Jj-G5l" secondAttribute="trailing" id="8vE-Ae-kRe"/>
+                            <constraint firstItem="hhb-hC-hzn" firstAttribute="centerX" secondItem="XBy-fQ-dfI" secondAttribute="centerX" id="F43-SA-HBc"/>
+                            <constraint firstItem="sdc-kD-WlE" firstAttribute="leading" secondItem="hhb-hC-hzn" secondAttribute="leading" id="LZg-SP-sjY"/>
+                            <constraint firstItem="ZCS-ul-jJq" firstAttribute="top" secondItem="sdc-kD-WlE" secondAttribute="bottom" constant="39" id="Mfv-e8-ylo"/>
+                            <constraint firstItem="hhb-hC-hzn" firstAttribute="top" secondItem="h0e-MQ-YtW" secondAttribute="bottom" constant="84" id="l0q-uz-j4M"/>
+                            <constraint firstItem="ZCS-ul-jJq" firstAttribute="trailing" secondItem="sdc-kD-WlE" secondAttribute="trailing" id="mxU-S2-4Xs"/>
+                            <constraint firstItem="sdc-kD-WlE" firstAttribute="top" secondItem="hhb-hC-hzn" secondAttribute="bottom" constant="54" id="oDN-Ct-TEL"/>
+                            <constraint firstItem="EAK-Jj-G5l" firstAttribute="top" secondItem="ZCS-ul-jJq" secondAttribute="bottom" constant="51" id="yLp-8W-ejp"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uUi-Sk-oOs" userLabel="First Responder" sceneMemberID="firstResponder"/>

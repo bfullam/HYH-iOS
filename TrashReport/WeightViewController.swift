@@ -20,6 +20,7 @@ class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationMan
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitAction(sender: AnyObject) {
         
+        //get location info
         let locationManage = CLLocationManager()
         
         locationManage.requestWhenInUseAuthorization()
@@ -32,9 +33,14 @@ class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationMan
             locValue = manager.location!.coordinate
         }
         
-        var locRef = baseRef.childByAppendingPath("\(locValue)")
+        //get date info
+        let date = NSDate()
+        
+        //put info into structure
+        let locRef = baseRef.childByAppendingPath("\(date)")
         let info =  ["trash_type": trashType,
-                     "trash_weight": Int(inputWeight.text!)!.description]
+                     "trash_weight": Int(inputWeight.text!)!.description,
+                     "Trash_loc": "\(locValue)"]
         
         //add to firebase
         locRef.setValue(info, withCompletionBlock: {

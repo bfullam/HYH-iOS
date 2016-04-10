@@ -51,7 +51,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("You selected row: \(indexPath.row)") //debugging
+//        print("You selected row: \(indexPath.row)") //debugging
         
         //business logic
         let cell = tableView.cellForRowAtIndexPath(indexPath)
