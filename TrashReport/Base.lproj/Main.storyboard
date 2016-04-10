@@ -74,7 +74,7 @@
                                     <constraint firstAttribute="height" constant="21" id="eAO-an-S3I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -88,10 +88,32 @@
                             <constraint firstItem="iBB-sq-ZcZ" firstAttribute="centerX" secondItem="KYp-Fj-ngr" secondAttribute="centerX" id="yJE-Rh-HaZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="inputWeight" destination="KYp-Fj-ngr" id="qAV-Lx-Wjq"/>
+                        <segue destination="NZm-dx-xc7" kind="show" identifier="toReceipt" id="4E1-Mr-8AM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpg-gX-Whv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965" y="-17"/>
+            <point key="canvasLocation" x="1971" y="-17"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YPg-U0-pLW">
+            <objects>
+                <viewController id="NZm-dx-xc7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h0e-MQ-YtW"/>
+                        <viewControllerLayoutGuide type="bottom" id="fDT-hN-fxl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XBy-fQ-dfI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uUi-Sk-oOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="389"/>
         </scene>
         <!--Counter View Controller-->
         <scene sceneID="wFG-9Z-oxU">
@@ -105,46 +127,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-hn-f2L">
-                                <rect key="frame" x="253" y="337" width="94" height="29"/>
-                                <connections>
-                                    <action selector="stepperValueChanged:" destination="Ds3-oI-uS4" eventType="valueChanged" id="2b9-eS-5xr"/>
-                                </connections>
-                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-v0-dWz">
                                 <rect key="frame" x="288" y="228" width="25" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter the number of items collected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbA-XD-frZ">
                                 <rect key="frame" x="136" y="161" width="328" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="p6K-Db-ijV"/>
+                                    <constraint firstAttribute="height" constant="21" id="pDo-K6-dUj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnn-CR-Zt6">
+                                <rect key="frame" x="276" y="402" width="49" height="30"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-hn-f2L">
+                                <rect key="frame" x="253" y="327" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="Ds3-oI-uS4" eventType="valueChanged" id="2b9-eS-5xr"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QfB-hn-f2L" firstAttribute="centerX" secondItem="Eef-v0-dWz" secondAttribute="centerX" id="0Od-zI-Mdq"/>
-                            <constraint firstItem="Eef-v0-dWz" firstAttribute="top" secondItem="qbA-XD-frZ" secondAttribute="bottom" constant="46" id="B3f-7J-aUT"/>
-                            <constraint firstItem="qbA-XD-frZ" firstAttribute="top" secondItem="CpS-hX-VlQ" secondAttribute="bottom" constant="97" id="LJO-U1-uUO"/>
-                            <constraint firstItem="qbA-XD-frZ" firstAttribute="centerX" secondItem="R5t-X9-Mf4" secondAttribute="centerX" id="Tf0-Ey-Ttm"/>
-                            <constraint firstItem="qbA-XD-frZ" firstAttribute="centerX" secondItem="Eef-v0-dWz" secondAttribute="centerX" id="Ufe-s6-lUq"/>
-                            <constraint firstItem="QfB-hn-f2L" firstAttribute="top" secondItem="Eef-v0-dWz" secondAttribute="bottom" constant="61" id="yum-rB-vVN"/>
+                            <constraint firstItem="qbA-XD-frZ" firstAttribute="centerX" secondItem="Eef-v0-dWz" secondAttribute="centerX" id="36c-uh-3Rn"/>
+                            <constraint firstItem="Eef-v0-dWz" firstAttribute="top" secondItem="qbA-XD-frZ" secondAttribute="bottom" constant="46" id="MVL-HD-3Mz"/>
+                            <constraint firstItem="qbA-XD-frZ" firstAttribute="top" secondItem="CpS-hX-VlQ" secondAttribute="bottom" constant="97" id="Pvj-p7-HHY"/>
+                            <constraint firstItem="qbA-XD-frZ" firstAttribute="centerX" secondItem="R5t-X9-Mf4" secondAttribute="centerX" id="TTl-ut-vgG"/>
+                            <constraint firstItem="QfB-hn-f2L" firstAttribute="centerX" secondItem="Eef-v0-dWz" secondAttribute="centerX" id="Y2Q-pR-1WT"/>
+                            <constraint firstItem="Wnn-CR-Zt6" firstAttribute="top" secondItem="QfB-hn-f2L" secondAttribute="bottom" constant="46" id="dvA-ep-fc0"/>
+                            <constraint firstItem="Wnn-CR-Zt6" firstAttribute="centerX" secondItem="QfB-hn-f2L" secondAttribute="centerX" id="h6R-f5-tpP"/>
+                            <constraint firstItem="QfB-hn-f2L" firstAttribute="top" secondItem="Eef-v0-dWz" secondAttribute="bottom" constant="51" id="wTa-zA-1Im"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="stepper" destination="QfB-hn-f2L" id="1EY-l8-UNb"/>
                         <outlet property="valueLable" destination="Eef-v0-dWz" id="Fzd-YA-3zl"/>
+                        <segue destination="NZm-dx-xc7" kind="show" identifier="toReceipt" id="S9r-eQ-fmP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6kl-np-zAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1965" y="756"/>
+            <point key="canvasLocation" x="1971" y="746"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Wdf-mP-Wq7">
@@ -165,4 +194,7 @@
             <point key="canvasLocation" x="574" y="-383"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="S9r-eQ-fmP"/>
+    </inferredMetricsTieBreakers>
 </document>

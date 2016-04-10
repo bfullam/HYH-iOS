@@ -9,8 +9,14 @@
 import UIKit
 
 class WeightViewController: UIViewController {
+    
+    
 
     var trashType = ""
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        <#code#>
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
