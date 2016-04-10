@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3A191997B6BD5BECE24DF9FD'
+               BlueprintIdentifier = 'B0B40F3632B64A477A668307'
                BlueprintName = 'Pods-TrashReportTests'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-TrashReportTests.a'>
+               BuildableName = 'Pods_TrashReportTests.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

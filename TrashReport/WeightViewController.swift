@@ -7,15 +7,45 @@
 //
 
 import UIKit
+import Firebase
+import CoreLocation
 
-class WeightViewController: UIViewController, UITextFieldDelegate {
+class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
     
     var trashType = ""
+    var locValue:CLLocationCoordinate2D!
+    var baseRef = Firebase(url:"https://glaring-fire-6068.firebaseio.com")
     
     @IBOutlet weak var inputWeight: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitAction(sender: AnyObject) {
-        self.performSegueWithIdentifier("toReceipt", sender: sender)
+        
+        let locationManage = CLLocationManager()
+        
+        locationManage.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManage.delegate = self
+            locationManage.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManage.startUpdatingLocation()
+        }
+        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            locValue = manager.location!.coordinate
+        }
+        
+        var locRef = baseRef.childByAppendingPath("\(locValue)")
+        let info =  ["trash_type": trashType,
+                     "trash_weight": Int(inputWeight.text!)!.description]
+        
+        //add to firebase
+        locRef.setValue(info, withCompletionBlock: {
+            (error:NSError?, ref:Firebase!) in
+            if( error != nil) {
+                print("Data failed")
+            } else {
+                print("Data saved")
+                self.performSegueWithIdentifier("toReceipt", sender: sender)
+            }
+        })
     }
     
 
@@ -36,7 +66,6 @@ class WeightViewController: UIViewController, UITextFieldDelegate {
             // Text field is not an Int
             submitButton.enabled = false
         }
-        
         // Return true so the text field will be changed
         return true
     }
@@ -48,7 +77,7 @@ class WeightViewController: UIViewController, UITextFieldDelegate {
         inputWeight.delegate = self
         inputWeight.keyboardType = .NumberPad
         
-        print("Trash type selected: \(trashType)") //debugging
+//        print("Trash type selected: \(trashType)") //debugging
         
         // Do any additional setup after loading the view.
     }
@@ -57,16 +86,5 @@ class WeightViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
