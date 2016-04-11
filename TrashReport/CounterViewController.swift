@@ -14,6 +14,7 @@ class CounterViewController: UIViewController, CLLocationManagerDelegate {
     
     var trashType = ""
     var locValue:CLLocationCoordinate2D!
+    var locationManager:CLLocationManager!
     var baseRef = Firebase(url:"https://glaring-fire-6068.firebaseio.com")
     
     @IBOutlet weak var stepper: UIStepper!
@@ -22,30 +23,18 @@ class CounterViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func submitAction(sender: AnyObject) {
         if (Int(stepper.value) > 0)
         {
-            //get location info
-            let locationManage = CLLocationManager()
-            
-            locationManage.requestWhenInUseAuthorization()
-            if CLLocationManager.locationServicesEnabled() {
-                locationManage.delegate = self
-                locationManage.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                locationManage.startUpdatingLocation()
-            }
-            func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-                locValue = manager.location!.coordinate
-            }
-            
             //get date info
             let date = NSDate()
             
             //put info into structure
-            let locRef = baseRef.childByAppendingPath("\(date)")
+            let dateRef = baseRef.childByAppendingPath("\(date)")
             let info =  ["trash_type": trashType,
                          "trash_count": Int(stepper.value).description,
-                         "Trash_loc": "\(locValue)"]
+                         "Trash_lat": locValue.latitude,
+                         "Trash_long": locValue.longitude]
             
             //add to firebase
-            locRef.setValue(info, withCompletionBlock: {
+            dateRef.setValue(info, withCompletionBlock: {
                 (error:NSError?, ref:Firebase!) in
                 if( error != nil) {
                     print("Data failed")
@@ -76,7 +65,20 @@ class CounterViewController: UIViewController, CLLocationManagerDelegate {
         stepper.autorepeat = true
         submitButton.enabled = false
         
-        // Do any additional setup after loading the view.
+        //get location info
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if (authorizationStatus == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        } else if (authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location!.coordinate
     }
 
     override func didReceiveMemoryWarning() {

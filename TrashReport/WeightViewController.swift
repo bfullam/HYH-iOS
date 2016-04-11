@@ -14,24 +14,12 @@ class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationMan
     
     var trashType = ""
     var locValue:CLLocationCoordinate2D!
+    var locationManager:CLLocationManager!
     var baseRef = Firebase(url:"https://glaring-fire-6068.firebaseio.com")
     
     @IBOutlet weak var inputWeight: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitAction(sender: AnyObject) {
-        
-        //get location info
-        let locationManage = CLLocationManager()
-        
-        locationManage.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManage.delegate = self
-            locationManage.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManage.startUpdatingLocation()
-        }
-        func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            locValue = manager.location!.coordinate
-        }
         
         //get date info
         let date = NSDate()
@@ -40,7 +28,8 @@ class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationMan
         let locRef = baseRef.childByAppendingPath("\(date)")
         let info =  ["trash_type": trashType,
                      "trash_weight": Int(inputWeight.text!)!.description,
-                     "Trash_loc": "\(locValue)"]
+                     "Trash_lat": locValue.latitude,
+                     "Trash_long": locValue.longitude]
         
         //add to firebase
         locRef.setValue(info, withCompletionBlock: {
@@ -83,9 +72,20 @@ class WeightViewController: UIViewController, UITextFieldDelegate, CLLocationMan
         inputWeight.delegate = self
         inputWeight.keyboardType = .NumberPad
         
-//        print("Trash type selected: \(trashType)") //debugging
-        
-        // Do any additional setup after loading the view.
+        //get location info
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        if (authorizationStatus == CLAuthorizationStatus.NotDetermined) {
+            locationManager.requestWhenInUseAuthorization()
+        } else if (authorizationStatus == CLAuthorizationStatus.AuthorizedWhenInUse) {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        locValue = manager.location!.coordinate
     }
 
     override func didReceiveMemoryWarning() {
