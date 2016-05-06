@@ -14,13 +14,27 @@ class ReceiptViewController: UIViewController {
     var trashWeight = ""
     var trashCount = ""
 
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var returnButton: UIButton!
+    @IBAction func returnAction(sender: AnyObject) {
+        self.performSegueWithIdentifier("toHome", sender: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Receipt"
-        
-//        print("trashType: \(trashType) " +
-//            "\ntrashWeight: \(trashWeight) " +
-//            "\ntrashCount: \(trashCount) ")
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        typeLabel.text = trashType
+        if(trashWeight != "")
+        {
+            weightLabel.text = trashWeight
+        }
+        if(trashCount != "")
+        {
+            countLabel.text = trashCount
+        }
         
         // Do any additional setup after loading the view.
     }

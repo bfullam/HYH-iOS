@@ -57,6 +57,12 @@ class CounterViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let receiptVC = (segue.destinationViewController as! ReceiptViewController)
+        receiptVC.trashType = trashType
+        receiptVC.trashCount = Int(valueLable.text!)!.description
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Trash Count"
